@@ -1,0 +1,25 @@
+{% render 'partials/head.liquid' %}
+
+<div class="app">
+  <header class="header">
+    <span class="header-title">{{ snapmap.name }}</span>
+  </header>
+
+  <main class="main">
+    <ul class="photo-grid">
+      {% for snap in snaps %}
+        <a href="/snap/{{ snap.uuid }}">
+          <img class="photo-grid-item" src="https://fdnd-agency.directus.app/assets/{{ snap.picture }}" alt="{{ snap.location }}">
+        </a>
+      {% endfor %}
+    </ul>
+  </main>
+
+  <nav class="nav-bar">
+    <a href="" class="nav__item"><img src="/assets/snappthis.svg" alt="search"></a>
+    <a href="" class="nav__item"><img src="/assets/profiel.svg" alt="profile"></a>
+    <a href="" class="nav__item"><img src="/assets/friends.svg" alt="friends"></a>
+  </nav>
+</div>
+
+{% render 'partials/foot.liquid' %}

@@ -1,0 +1,42 @@
+
+{% render 'partials/head.liquid' %}
+
+<div class="app">
+  <header class="header">
+    <span class="header-title">playful</span>
+    <a class="header-grid">
+      <img src="assets/grid.svg">
+    </a>
+  </header>
+
+  <main class="main">
+    <div class="location-bar">
+      <span class="location-bar-name"></span>
+    </div>
+
+    <div class="camera-section">
+      <a class="camera-a">
+        <img class="camera-background" src="assets/camera.svg">
+        <img class="camera-img" src="assets/whitecamera.svg">
+      </a>
+    </div>
+
+    <div class="loader"></div>
+
+    {% for snapmap in snapmaps %}
+      <a href="/snapmap/{{ snapmap.slug }}">
+        <img src="{{ snapmap.image.url }}">
+        <p>{{ snapmap.name }}</p>
+      </a>
+    {% endfor %}
+
+  </main>
+
+  <nav class="nav-bar">
+    <a href=""><img src="assets/snappthis.svg" alt="search"></a>
+    <a href=""><img src="assets/profiel.svg" alt="profile"></a>
+    <a href=""><img src="assets/friends.svg" alt="friends"></a>
+  </nav>
+</div>
+
+{% render 'partials/foot.liquid' %}

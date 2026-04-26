@@ -1,0 +1,30 @@
+{% render 'partials/head.liquid' %}
+
+<div class="app">
+  <header class="header">
+    <span class="header-title">{{ snap.location }}</span>
+  </header>
+
+  <main class="main">
+    <img src="https://fdnd-agency.directus.app/assets/{{ snap.picture }}" alt="{{ snap.location }}" style="width:100%">
+
+    {% assign likes = 0 %}
+    {% for action in snap.actions %}
+      {% if action.action == "like" %}
+        {% assign likes = likes | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+
+    <form class="like-form" method="POST" action="/snap/{{ snap.uuid }}/like">
+      <button type="submit">♥ {{ likes }}</button>
+    </form>
+  </main>
+
+  <nav class="nav-bar">
+    <a href="" class="nav__item"><img src="assets/snappthis.svg" alt="search"></a>
+    <a href="" class="nav__item"><img src="assets/profiel.svg" alt="profile"></a>
+    <a href="" class="nav__item"><img src="assets/friends.svg" alt="friends"></a>
+  </nav>
+</div>
+
+{% render 'partials/foot.liquid' %}
